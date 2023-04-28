@@ -4,5 +4,5 @@
 for pid in $(pgrep bash)
 do
 	name=$(cat "/proc/$pid/comm")
-	echo $pid $name
+	echo "$pid" "$name"
 done
