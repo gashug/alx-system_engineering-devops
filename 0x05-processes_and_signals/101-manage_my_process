@@ -1,48 +1,26 @@
 #!/usr/bin/env bash
 # Manages manage_my_process.
 
-PIDFILE="/var/run/my_process.pid"
-LOGFILE="/tmp/my_process"
-
-start_process() {
-  if [ -f "$PIDFILE" ]; then
-    echo "manage_my_process already started"
-    exit 1
-  fi
-
-  echo "Starting manage_my_process"
-  bash /path/to/manage_my_process &
-  echo $! > $PIDFILE
+if [ "$1" == "start" ]
+then
+  ./manage_my_process &
+  echo $$ > /var/run/my_process.pid
   echo "manage_my_process started"
-}
 
-stop_process() {
-  if [ ! -f "$PIDFILE" ]; then
-    echo "manage_my_process is not running"
-    exit 1
-  fi
-
-  echo "Stopping manage_my_process"
-  kill $(cat $PIDFILE)
-  rm $PIDFILE
+elif [ "$1" == "stop" ]
+then
+  kill "$(pgrep -f /manage_my_process)"
+  rm /var/run/my_process.pid
   echo "manage_my_process stopped"
-}
 
-case "$1" in
-  start)
-    start_process
-    ;;
-  stop)
-    stop_process
-    ;;
-  restart)
-    stop_process
-    start_process
-    echo "manage_my_process restarted"
-    ;;
-  *)
-    echo "Usage: $0 {start|stop|restart}"
-    exit 1
-esac
+elif [ "$1" == "restart" ]
+then
+  kill "$(pgrep -f /manage_my_process)"
+  rm /var/run/my_process.pid
+  ./manage_my_process &
+  echo $$ > /var/run/my_process.pid
+  echo "manage_my_process restarted"
 
-exit 0
+else
+  echo "Usage: manage_my_process {start|stop|restart}"
+fi
