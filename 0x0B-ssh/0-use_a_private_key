@@ -1,0 +1,3 @@
+#!/bin/bash
+# Connecting to a server through a private key
+ssh -i ~/.ssh/school -l ubuntu 54.162.51.98
