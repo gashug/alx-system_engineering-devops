@@ -1,3 +1,4 @@
+# creating a file with certain requirements
 file { '/tmp/school':
   ensure  => file,
   mode    => '0744',
