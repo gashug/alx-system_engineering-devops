@@ -12,5 +12,4 @@ echo "server {
 }" |  tee /etc/nginx/sites-available/redirect_me
 
 ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
-nginx -t
 service nginx restart
