@@ -7,7 +7,7 @@ echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 cat <<EOL > /etc/nginx/sites-available/custom_404
 server {
     listen 80 default_server;
-    server_name _;
+    server_name 130152-web-01;
 
     error_page 404 /custom_404.html;
     location = /custom_404.html {
@@ -17,10 +17,7 @@ server {
     location / {
         return 404;
     }
-
-    # Additional Nginx configuration can go here if needed
 }
 EOL
 ln -s /etc/nginx/sites-available/custom_404 /etc/nginx/sites-enabled/
-nginx -t
 service nginx reload
