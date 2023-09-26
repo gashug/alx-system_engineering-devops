@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #bash script to make /redirect_me redirect to another site
-sudo apt update
-sudo apt install -y nginx
+apt update
+apt install -y nginx
 echo "server {
     listen 80;
     server_name_;
@@ -9,12 +9,8 @@ echo "server {
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
-}" | sudo tee /etc/nginx/sites-available/redirect_me
+}" |  tee /etc/nginx/sites-available/redirect_me
 
-sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
-
-sudo nginx -t
-
-sudo systemctl reload nginx
-
-sudo systemctl restart nginx
+ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
+nginx -t
+service nginx restart

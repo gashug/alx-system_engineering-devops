@@ -2,7 +2,6 @@
 # Installing Nginx to server
 apt-get -y update
 apt-get install -y nginx
-
-echo "Hello World!" > /var/www/html/index.html
-
+mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index/txt
+echo "Hello World!" > /usr/share/nginx/html/index.html
 service nginx restart

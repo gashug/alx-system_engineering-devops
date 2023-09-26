@@ -23,4 +23,4 @@ server {
 EOL
 ln -s /etc/nginx/sites-available/custom_404 /etc/nginx/sites-enabled/
 nginx -t
-systemctl reload nginx
+service nginx reload
