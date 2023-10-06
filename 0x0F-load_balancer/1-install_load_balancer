@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # install and configure HAproxy on lb-01 server
 sudo apt update
-sudo apt install haproxy -y
+sudo apt install haproxy=1.5
 sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOL
 frontend my_frontend
     bind *:80
