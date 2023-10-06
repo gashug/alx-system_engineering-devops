@@ -11,9 +11,7 @@ frontend my_frontend
 backend my_backend
     mode http
     balance roundrobin
-    server web-01 130152-web-01:80 check
-    server web-02 130152-web-02:80 check
+    server 130152-web-01 54.157.184.253:80 check
+    server 130152-web-02 52.87.255.172:80 check
 EOL
-service haproxy enable
-service haproxy start
 service haproxy restart
