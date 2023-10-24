@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# script that gathers info using an API and exports as CSV
+""" script that gathers info using an API and exports as CSV """
 import csv
 import requests
 import sys

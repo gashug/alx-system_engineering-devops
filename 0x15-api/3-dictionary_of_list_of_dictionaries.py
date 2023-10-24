@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# script that gathers info from API and exports to JSON
+""" script that gathers info from API and exports to JSON """
 import json
 import requests
 import sys
