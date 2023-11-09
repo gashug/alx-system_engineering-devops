@@ -1,0 +1,23 @@
+Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu focal InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:4 http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu focal InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu focal-backports InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  iproute2 libatm1 libmnl0 libnginx-mod-http-image-filter
+  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
+  libxslt1.1 libxtables12 nginx-common nginx-core
+Suggested packages:
+  iproute2-doc fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  iproute2 libatm1 libmnl0 libnginx-mod-http-image-filter
+  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
+  libxslt1.1 libxtables12 nginx nginx-common nginx-core
+0 upgraded, 12 newly installed, 0 to remove and 247 not upgraded.
+Need to get 1,677 kB of archives.
+After this operation, 5,710 kB of additional disk space will be used.
+Do you want to continue? [Y/n] 
