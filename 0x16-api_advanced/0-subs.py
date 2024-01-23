@@ -6,19 +6,16 @@ import requests
 def number_of_subscribers(subreddit):
     """Gets number of subscribers
        Args:
-           subreddit (str): name of subreddit
+           subreddit (str): name of subreddit to query
        Returns:
-           number of subscribers if valid, 0 otherwise
+           int: number of subscribers if valid, 0 if otherwise
     """
-    base_url = 'https://api.reddit.com/r/'
-    headers = {'User-Agent': 'my-app/0.0.1'}
-    response = requests.get(
-        '{}{}/about'.format(
-            base_url, subreddit), headers=headers, allow_redirects=False)
+    base_url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {'User-Agent': 'MyRedditBot/1.0'}
+    response = requests.get(base_url, headers=headers, allow_redirects=False)
 
-    if response.status_code != 200:
+    if response.status_code == 200:
+        about_dict = response.json()
+        return about_dict['data']['subscribers']
+    else:
         return 0
-
-    about_dict = response.json()
-
-    return about_dict['data']['subscribers']
