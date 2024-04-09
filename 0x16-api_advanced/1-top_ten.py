@@ -8,11 +8,21 @@ def top_ten(subreddit):
        Args:
            subreddit (str): name of subreddit
     """
-    base_url = 'https://api.reddit.com/r/'
-    headers = {'User-Agent': 'my-app/0.0.1'}
-    response = requests.get(
-        '{}{}/hot?limit=10'.format(
-            base_url, subreddit), headers=headers, allow_redirects=False)
+    CLIENT_ID = '4nnh-n-k10tN0YReY9iz9g'
+    SECRET_KEY = '2dyvCWMw8dKRYq2cCPsxQiHWlwZO-Q'
+    auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
+    data = {
+        'grant_type': 'password',
+        'username': 'Acrobatic-Donut-9369',
+        'password': 'gg438379AP!'
+        }
+    headers = {'User-Agent': 'MyAPI/0.0.1'}
+    res = requests.post('https://www.reddit.com/api/v1/access_token',
+                    auth=auth, data=data, headers=headers)
+    TOKEN = res.json()['access_token']
+    headers['Authorization'] = f'bearer {TOKEN}'
+    url = f'https://oauth.reddit.com/r/{subreddit}/hot?limit=9'
+    response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code != 200:
         print('None')
