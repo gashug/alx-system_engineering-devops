@@ -10,10 +10,14 @@ def number_of_subscribers(subreddit):
            int: number of subscribers if valid, 0 if otherwise
     """
     import requests
+    from config import reddit_access_token
 
-    output = requests.get("https://www.reddit.com/r/{}/about.json"
+    headers = {"User-Agent": "My-User-Agent"}
+    headers['Authorization'] = f'bearer {reddit_access_token}'
+
+    output = requests.get("https://oauth.reddit.com/r/{}/about.json"
                           .format(subreddit),
-                          headers={"User-Agent": "My-User-Agent"},
+                          headers=headers,
                           allow_redirects=False)
     if output.status_code == 200:
         about_dict = output.json()
